@@ -33,11 +33,14 @@ jobs:
         run: cd env/prod
 
       - name: Terraform Init
+        working-directory: env/prod
         run: terraform init
 
       - name: Terraform Plan
+        working-directory: env/prod
         run: terraform plan
 
       - name: Terraform Apply
         if: github.ref == 'refs/heads/main'
+        working-directory: env/prod
         run: terraform apply -auto-approve
