@@ -3,7 +3,7 @@ variable "region" {
 }
 
 variable "cluster_name" {
-  default = "my-eks-cluster"
+  default = "eks-cluster"
 }
 
 variable "node_instance_type" {
@@ -46,5 +46,5 @@ variable "ami_type" {
 
 variable "vpc_name" {
   type = string
-  default = "VPC-ECS"
+  default = "VPC-EKS"
 }
