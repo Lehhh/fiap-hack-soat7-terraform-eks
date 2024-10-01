@@ -1,14 +1,9 @@
 module "vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "5.0.0"  # Utilize a versão mais recente do módulo
-
-  name = "eks-vpc"
-  cidr = "10.0.0.0/16"
-
-  azs             = ["us-east-1a", "us-east-1b"]
-  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
-  public_subnets  = ["10.0.3.0/24", "10.0.4.0/24"]
-
+  source = "terraform-aws-modules/vpc/aws"
+  name = var.vpc_name
+  cidr = var.vpc_cidr
+  azs = var.availability_zones
+  private_subnets = var.private_subnets
+  public_subnets = var.public_subnets
   enable_nat_gateway = true
-  single_nat_gateway = true
 }
