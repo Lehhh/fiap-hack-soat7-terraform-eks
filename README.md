@@ -10,17 +10,25 @@ configurar o kubectl
 aws eks --region us-east-1 update-kubeconfig --name eks-cluster
 
 
-necessário dar permissionamento dentro do cluster do eks
+Para subir a imagem no ecr
+
+#Criar tag
+docker tag soat7-lanchonete:1.0.1 {ID_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com/soat7-lanchonete:1.0.1
+
+#Efetuar login
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin {ID_ACCOUNT}.dkr.ecr.us-east-1.amazonaws.com
+
+#Criar repo no ECR
+aws ecr create-repository --repository-name soat7-lanchonete --region us-east-1                           
+
+#realizar push da imagem
+
+docker push 737021845667.dkr.ecr.us-east-1.amazonaws.com/soat7-lanchonete:1.0.1
 
 
-criar a role
-aws iam create-role --role-name eks-access-role --assume-role-policy-document file://./.aws/eks-access-trust-policy.json
 
-associar permissoes de cluster a role
 
-aws iam attach-role-policy --role-name eks-access-role --policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
 
-associar servicos do eks a role
 
-aws iam attach-role-policy --role-name eks-access-role --policy-arn arn:aws:iam::aws:policy/AmazonEKSServicePolicy
+
 
