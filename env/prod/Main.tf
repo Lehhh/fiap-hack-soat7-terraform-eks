@@ -13,7 +13,7 @@ terraform {
   }
   required_version = ">= 0.14.9"
   backend "s3" {
-    bucket         = "soat7-lshiniti-infra-state"
+    bucket         = "fiap-hack-soat7-infra-state"
     key            = "terraform/eks/terraform.tfstate"
     region         = "us-east-1"
   }
