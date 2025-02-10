@@ -13,7 +13,7 @@ module "eks" {
 
 
   eks_managed_node_groups = {
-    lanchonete = {
+    hackaton = {
       # Starting on 1.30, AL2023 is the default AMI type for EKS managed node groups
       ami_type       = var.ami_type
       instance_types = [var.node_instance_type]
